@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, View, Text, TextInput, Button, Alert } from "react-native";
-import * as firebase from 'firebase'
+import { StyleSheet, View, TextInput, Alert } from "react-native";
+import { Button, Icon, Text } from "native-base";
+import * as firebase from "firebase";
 
 export default class SignupScreen extends React.Component {
   constructor(props) {
@@ -79,6 +80,11 @@ export default class SignupScreen extends React.Component {
         <View style={{ paddingTop: 10 }} />
 
         <Button title="Back to Login" onPress={this.onBackToLoginPress} />
+
+        <Button iconLeft danger>
+          <Icon name="logo-google" />
+          <Text>Google Login</Text>
+        </Button>
       </View>
     );
   }

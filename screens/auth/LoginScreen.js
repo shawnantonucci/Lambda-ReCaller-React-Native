@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import { Input, Button } from "react-native-elements";
-import Icon from "react-native-vector-icons/FontAwesome";
+import {
+  Button,
+  Icon,
+  Text,
+  Input,
+  Item,
+  Content,
+  Header,
+  Container
+} from "native-base";
 
 import {
   StyleSheet,
   View,
-  Text,
-  TextInput,
-  // Button,
   Alert,
-  AsyncStorage
+  AsyncStorage,
+  ImageBackground
 } from "react-native";
 import { GoogleSignin, statusCodes } from "react-native-google-signin";
 import * as firebase from "firebase";
@@ -20,14 +26,14 @@ export default class LoginScreen extends React.Component {
     title: "Welcome To ReCaller",
     headerTitleStyle: {
       fontWeight: "500",
-      fontSize: 20,
+      fontSize: 18,
       alignSelf: "center",
       color: "white",
       textAlign: "center",
       flex: 1
     },
     headerStyle: {
-      backgroundColor: "red"
+      backgroundColor: "grey"
     }
   };
   constructor(props) {
@@ -145,7 +151,8 @@ export default class LoginScreen extends React.Component {
             fontSize: 35,
             fontWeight: "bold",
             marginTop: "5%",
-            color: "black"
+            color: "black",
+            fontFamily: "monospace"
           }}
         >
           ReCaller
@@ -156,57 +163,82 @@ export default class LoginScreen extends React.Component {
             fontWeight: "bold",
             color: "black",
             marginBottom: "10%",
-            marginTop: "10%",
+            marginTop: "5%",
             textDecorationLine: "underline"
           }}
         >
           Login
         </Text>
-        <Input
-          value={this.state.email}
-          onChangeText={text => {
-            this.setState({ email: text });
-          }}
-          placeholder="Email"
-          leftIcon={{ type: "font-awesome", name: "envelope" }}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <TextInput />
-        <Input
-          value={this.state.password}
-          onChangeText={text => {
-            this.setState({ password: text });
-          }}
-          placeholder="Password"
-          secureTextEntry={true}
-          leftIcon={{ type: "font-awesome", name: "lock" }}
-        />
 
-        <View style={{ paddingTop: 20 }} />
-        <Button
-          titleStyle={{ width: 150, fontSize: 14, color: "black" }}
-          title="Submit Email Login"
-          type="outline"
-          onPress={this.onLoginPress}
-        />
+        <View style={{ width: "75%" }}>
+          <Item rounded>
+            <Input
+              placeholder="Rounded Textbox"
+              value={this.state.email}
+              onChangeText={text => {
+                this.setState({ email: text });
+              }}
+              placeholder="Email"
+              leftIcon={{ type: "font-awesome", name: "envelope" }}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+          </Item>
+          <View style={{ paddingTop: 20 }} />
+          <Item rounded>
+            <Input
+              value={this.state.password}
+              onChangeText={text => {
+                this.setState({ password: text });
+              }}
+              placeholder="Password"
+              secureTextEntry={true}
+              leftIcon={{ type: "font-awesome", name: "lock" }}
+            />
+          </Item>
 
-        <View style={{ paddingTop: 20 }} />
-        <Button
-          titleStyle={{ width: 150, fontSize: 14, color: "black" }}
-          title="Create Email Account"
-          type="outline"
-          onPress={this.onCreateAccountPress}
-        />
-        <View style={{ paddingTop: 50 }} />
-        <Button
-          titleStyle={{ width: 135, fontSize: 14, color: "black" }}
-          icon={<Icon name="google" size={20} color="red" />}
-          type="outline"
-          onPress={this._signIn}
-          title="Google Login"
-        />
+          <View style={{ paddingTop: 20 }} />
+
+          <View style={{}}>
+            <Button
+              iconLeft
+              type="outline"
+              onPress={this.onLoginPress}
+              style={{ alignSelf: "center", width: 185 }}
+            >
+              <Icon name="md-send" />
+              <Text uppercase={false}>Submit Email Login</Text>
+            </Button>
+
+            <View style={{ paddingTop: 20 }} />
+
+            <Button
+              iconLeft
+              type="outline"
+              onPress={this.onCreateAccountPress}
+              style={{ alignSelf: "center", width: 185 }}
+            >
+              <Icon name="md-create" />
+              <Text uppercase={false}>Sign Up With Email</Text>
+            </Button>
+            <Text style={{ marginTop: 15, alignSelf: "center" }}>
+              Don't have an account?{" "}
+              <Icon
+                style={{ fontSize: 20 }}
+                name="arrow-round-up"
+              />
+            </Text>
+          </View>
+
+          <View style={{ paddingTop: 50 }} />
+          <Button iconLeft danger style={{ alignSelf: "center", width: 185 }}>
+            <Icon name="logo-google" />
+            <Text uppercase={false} style={{ fontSize: 18 }}>
+              Google Login
+            </Text>
+          </Button>
+        </View>
       </View>
     );
   }
@@ -215,6 +247,7 @@ export default class LoginScreen extends React.Component {
 const styles = StyleSheet.create({
   Wrapper: {
     // backgroundColor: "red",
+    height: "100%",
     paddingTop: 30,
     alignItems: "center"
   }
