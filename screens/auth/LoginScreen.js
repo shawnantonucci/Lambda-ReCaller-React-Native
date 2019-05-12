@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { Input, Button } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 import {
   StyleSheet,
   View,
   Text,
   TextInput,
-  Button,
+  // Button,
   Alert,
   AsyncStorage
 } from "react-native";
@@ -15,7 +17,18 @@ import TestScreen from "../TestScreen";
 
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
-    title: "Please sign in"
+    title: "Welcome To ReCaller",
+    headerTitleStyle: {
+      fontWeight: "500",
+      fontSize: 20,
+      alignSelf: "center",
+      color: "white",
+      textAlign: "center",
+      flex: 1
+    },
+    headerStyle: {
+      backgroundColor: "red"
+    }
   };
   constructor(props) {
     super(props);
@@ -126,48 +139,83 @@ export default class LoginScreen extends React.Component {
       return <TestScreen user={this.state.userInfo.user} />;
     }
     return (
-      <View style={{ paddingTop: 30, alignItems: "center" }}>
-        <Text>Login</Text>
-
-        <TextInput
-          style={{ width: 200, height: 40, borderWidth: 1 }}
+      <View style={styles.Wrapper}>
+        <Text
+          style={{
+            fontSize: 35,
+            fontWeight: "bold",
+            marginTop: "5%",
+            color: "black"
+          }}
+        >
+          ReCaller
+        </Text>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "bold",
+            color: "black",
+            marginBottom: "10%",
+            marginTop: "10%",
+            textDecorationLine: "underline"
+          }}
+        >
+          Login
+        </Text>
+        <Input
           value={this.state.email}
           onChangeText={text => {
             this.setState({ email: text });
           }}
           placeholder="Email"
+          leftIcon={{ type: "font-awesome", name: "envelope" }}
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
         />
-
-        <View style={{ paddingTop: 10 }} />
-
-        <TextInput
-          style={{ width: 200, height: 40, borderWidth: 1 }}
+        <TextInput />
+        <Input
           value={this.state.password}
           onChangeText={text => {
             this.setState({ password: text });
           }}
           placeholder="Password"
           secureTextEntry={true}
+          leftIcon={{ type: "font-awesome", name: "lock" }}
         />
-        <View style={{ paddingTop: 10 }} />
 
-        <Button title="Login" onPress={this.onLoginPress} />
+        <View style={{ paddingTop: 20 }} />
+        <Button
+          titleStyle={{ width: 150, fontSize: 14, color: "black" }}
+          title="Submit Email Login"
+          type="outline"
+          onPress={this.onLoginPress}
+        />
 
-        <View style={{ paddingTop: 10 }} />
-
-        <Button title="Google Signin" onPress={this._signIn} />
-
-        <View style={{ paddingTop: 10 }} />
-
-        <Button title="Create Account" onPress={this.onCreateAccountPress} />
-
-        <View style={{ paddingTop: 10 }} />
+        <View style={{ paddingTop: 20 }} />
+        <Button
+          titleStyle={{ width: 150, fontSize: 14, color: "black" }}
+          title="Create Email Account"
+          type="outline"
+          onPress={this.onCreateAccountPress}
+        />
+        <View style={{ paddingTop: 50 }} />
+        <Button
+          titleStyle={{ width: 135, fontSize: 14, color: "black" }}
+          icon={<Icon name="google" size={20} color="red" />}
+          type="outline"
+          onPress={this._signIn}
+          title="Google Login"
+        />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  Wrapper: {
+    // backgroundColor: "red",
+    paddingTop: 30,
+    alignItems: "center"
+  }
+});
