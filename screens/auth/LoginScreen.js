@@ -171,7 +171,7 @@ export default class LoginScreen extends React.Component {
         </Text>
 
         <View style={{ width: "75%" }}>
-          <Item rounded>
+          <Item rounded style={{ borderColor: "black" }}>
             <Input
               placeholder="Rounded Textbox"
               value={this.state.email}
@@ -186,7 +186,7 @@ export default class LoginScreen extends React.Component {
             />
           </Item>
           <View style={{ paddingTop: 20 }} />
-          <Item rounded>
+          <Item rounded style={{ borderColor: "black" }}>
             <Input
               value={this.state.password}
               onChangeText={text => {
@@ -224,10 +224,7 @@ export default class LoginScreen extends React.Component {
             </Button>
             <Text style={{ marginTop: 15, alignSelf: "center" }}>
               Don't have an account?{" "}
-              <Icon
-                style={{ fontSize: 20 }}
-                name="arrow-round-up"
-              />
+              <Icon style={{ fontSize: 20 }} name="arrow-round-up" />
             </Text>
           </View>
 
@@ -246,7 +243,7 @@ export default class LoginScreen extends React.Component {
 
 const styles = StyleSheet.create({
   Wrapper: {
-    // backgroundColor: "red",
+    backgroundColor: "#dbdbdb",
     height: "100%",
     paddingTop: 30,
     alignItems: "center"
