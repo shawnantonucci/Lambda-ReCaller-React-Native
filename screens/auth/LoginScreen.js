@@ -4,18 +4,14 @@ import {
   Icon,
   Text,
   Input,
-  Item,
-  Content,
-  Header,
-  Container
+  Item
 } from "native-base";
+import { SocialIcon } from "react-native-elements";
 
 import {
   StyleSheet,
   View,
-  Alert,
-  AsyncStorage,
-  ImageBackground
+  Alert
 } from "react-native";
 import { GoogleSignin, statusCodes } from "react-native-google-signin";
 import * as firebase from "firebase";
@@ -171,7 +167,7 @@ export default class LoginScreen extends React.Component {
         </Text>
 
         <View style={{ width: "75%" }}>
-          <Item rounded style={{ borderColor: "black" }}>
+          <Item regular style={{ borderColor: "black" }}>
             <Input
               placeholder="Rounded Textbox"
               value={this.state.email}
@@ -186,7 +182,7 @@ export default class LoginScreen extends React.Component {
             />
           </Item>
           <View style={{ paddingTop: 20 }} />
-          <Item rounded style={{ borderColor: "black" }}>
+          <Item regular style={{ borderColor: "black" }}>
             <Input
               value={this.state.password}
               onChangeText={text => {
@@ -229,12 +225,13 @@ export default class LoginScreen extends React.Component {
           </View>
 
           <View style={{ paddingTop: 50 }} />
-          <Button iconLeft danger style={{ alignSelf: "center", width: 185 }}>
-            <Icon name="logo-google" />
-            <Text uppercase={false} style={{ fontSize: 18 }}>
-              Google Login
-            </Text>
-          </Button>
+          <SocialIcon
+            title="Sign In With Google"
+            button
+            type="google"
+            onPress={this._signIn}
+            style={{ backgroundColor: "red", width: 185, alignSelf: "center" }}
+          />
         </View>
       </View>
     );

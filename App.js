@@ -65,11 +65,8 @@ export default class App extends React.Component {
               console.log("No such document!");
 
               var data = {
-                displayName: "Shawn",
-                phoneNumber: "914-323-3456",
+                displayName,
                 email,
-                photoUrl:
-                  "https://media.licdn.com/dms/image/C5603AQF7ZNPlmP0waQ/profile-displayphoto-shrink_200_200/0?e=1562198400&v=beta&t=xtZ1wFVvHZ64h9QrsfLjAbWZejRu0uGOXTwNldEbHZI",
                 uid
               };
               var setDoc = db
