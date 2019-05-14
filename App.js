@@ -11,7 +11,6 @@ import AppNavigator from "./navigation/AppNavigator";
 import MainTabNavigator from "./navigation/MainTabNavigator";
 import { db } from "./constants/ApiKeys";
 
-import ApiKeys from "./constants/ApiKeys";
 import * as firebase from "firebase";
 
 export default class App extends React.Component {
@@ -56,7 +55,7 @@ export default class App extends React.Component {
         // User is signed in.
         // console.log(user.uid, "From user");
 
-        var userRef = db.collection("users/").doc(uid);
+        var userRef = db.collection("users").doc(uid);
 
         var getDoc = userRef
           .get()
@@ -88,14 +87,6 @@ export default class App extends React.Component {
           .catch(err => {
             console.log("Error getting document", err);
           });
-
-        // var data = {
-        //   displayName: name,
-        //   phoneNumber,
-        //   email,
-        //   photoUrl,
-        //   uid
-        // };
       } else {
         // No user is signed in.
         return;

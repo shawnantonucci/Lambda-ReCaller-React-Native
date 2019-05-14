@@ -10,7 +10,7 @@ import {
   Button
 } from "react-native";
 import { GoogleSignin } from "react-native-google-signin";
-import { db, auth } from "../constants/ApiKeys";
+// import { db, auth } from "../constants/ApiKeys";
 
 import * as firebase from "firebase";
 

@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#dbdbdb",
     height: "100%",
     paddingTop: 30,
+    paddingBottom: 80,
     alignItems: "center"
   }
 });
